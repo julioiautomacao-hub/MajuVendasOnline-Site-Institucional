@@ -1,0 +1,159 @@
+---
+import Logo from "./Logo.astro";
+import Button from "./Button.astro";
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items?: NavItem[];
+  active?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  sticky?: boolean;
+}
+
+const {
+  items = [
+    { label: "Home", href: "/" },
+    { label: "Sobre", href: "#metodo" },
+    { label: "Como funciona", href: "#como-funciona" },
+    { label: "Seleções", href: "#selecoes" },
+    { label: "Contato", href: "#contato" },
+  ],
+  active = "Home",
+  ctaLabel = "Ver curadoria",
+  ctaHref = "#curadoria",
+  sticky = true,
+} = Astro.props;
+---
+
+<header class="site-header" data-sticky={sticky ? "true" : undefined}>
+  <a href="/" aria-label="Maju Vendas Online">
+    <Logo size={36} />
+  </a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="site-nav" id="site-nav">
+    {items.map((item) => (
+      <a href={item.href} class="nav-link" data-active={item.label === active ? "true" : undefined}>
+        {item.label}
+      </a>
+    ))}
+    <Button variant="action" size="sm" href={ctaHref} class="nav-cta">{ctaLabel}</Button>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const nav = document.getElementById("site-nav");
+  toggle?.addEventListener("click", () => {
+    const open = nav?.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 18px 32px;
+    background: var(--bg);
+    border-bottom: var(--border);
+    top: 0;
+    z-index: 50;
+  }
+  .site-header[data-sticky="true"] {
+    position: sticky;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    color: var(--text-body);
+    font-weight: var(--weight-regular);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
+  .nav-link:hover {
+    color: var(--brand);
+    text-decoration: none;
+  }
+  .nav-link[data-active="true"] {
+    color: var(--brand);
+    font-weight: var(--weight-semibold);
+    border-bottom: 2px solid var(--action);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-input);
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--ink-900);
+  }
+
+  @media (max-width: 860px) {
+    .nav-toggle {
+      display: flex;
+    }
+    .site-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      background: var(--bg);
+      border-bottom: var(--border);
+      padding: 12px 32px 20px;
+      display: none;
+    }
+    .site-nav.open {
+      display: flex;
+    }
+    .site-header {
+      position: relative;
+    }
+    :global(.nav-cta) {
+      margin-top: 10px;
+    }
+  }
+</style>

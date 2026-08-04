@@ -1,0 +1,1133 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Button from "../components/Button.astro";
+import Logo from "../components/Logo.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
+import Icon from "../components/Icon.astro";
+
+import heroWorkspace from "../assets/images/hero-workspace.jpg";
+import nichoTecnologia from "../assets/images/nicho-tecnologia.jpg";
+import nichoSaude from "../assets/images/nicho-saude.jpg";
+import nichoBemEstar from "../assets/images/nicho-bem-estar.jpg";
+import imagemCursos from "../assets/images/Imagem-Cursos.jpg";
+import imagemAchadinhos from "../assets/images/Imagem-Achadinhos.jpg";
+import imagemBlog from "../assets/images/Imagem-Blog.jpg";
+
+const nichos = [
+  { n: "01", word: "TECNOLOGIA", desc: "Ferramentas e gadgets que facilitam sua rotina e trabalho.", img: nichoTecnologia },
+  { n: "02", word: "SAÚDE", desc: "Métodos, suplementos e hábitos validados para sua energia.", img: nichoSaude },
+  { n: "03", word: "BEM-ESTAR", desc: "Autocuidado, equilíbrio e produtos para o seu dia a dia.", img: nichoBemEstar },
+];
+
+const passos = [
+  { n: "01", icon: "search", iconBg: "var(--brand)", iconFg: "var(--text-on-brand)", labelColor: "var(--brand)", title: "Garimpo rígido", desc: "Vasculhamos o mercado de tech, saúde e bem-estar e cortamos o que é promessa vazia, marca sem histórico ou qualidade duvidosa.", align: "right" },
+  { n: "02", icon: "shield-check", iconBg: "var(--support)", iconFg: "var(--brand)", labelColor: "var(--teal-700)", title: "Validação e checagem", desc: "Conferimos reputação do produtor, suporte, política de reembolso e o que dizem quem já comprou. Só passa o que se sustenta.", align: "left" },
+  { n: "03", icon: "external-link", iconBg: "var(--action)", iconFg: "var(--text-on-action)", labelColor: "var(--amber-ink)", title: "Indicação direta", desc: "Publicamos o link oficial com o aviso de afiliado, dizendo para quem serve e para quem não serve. Sem rodeios.", align: "right" },
+];
+
+const vitrine = [
+  { badge: "Educação & desenvolvimento", title: "Cursos recomendados", desc: "Treinamentos e formações validados para potencializar suas habilidades com segurança.", cta: "Ver cursos selecionados", img: imagemCursos },
+  { badge: "Gadgets & utilidades", title: "Produtos e achadinhos", desc: "Seleção dos melhores produtos em tecnologia e bem-estar com o melhor custo-benefício.", cta: "Explorar achados", img: imagemAchadinhos },
+  { badge: "Análises & dicas", title: "Blog Maju Vendas", desc: "Análises profundas, guias de compra e dicas para você não errar na escolha.", cta: "Ler artigos", img: imagemBlog },
+  { badge: "Em breve · comunidade", title: "AchadosAvocados", desc: "Nosso projeto de curadoria visual e achadinhos exclusivos nas redes sociais.", cta: "Conhecer o projeto", img: null },
+];
+---
+
+<Layout title="Maju Vendas Online — Recomendações honestas, escolhidas a dedo">
+  <div class="page">
+    <SiteHeader active="Home" />
+
+    <section class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">Curadoria independente</span>
+
+        <h1 class="hero-title">Recomendações honestas, escolhidas a dedo.</h1>
+
+        <p class="hero-body">
+          A internet tem produto demais e critério de menos. Nós lemos, comparamos e certificamos antes de indicar
+          — em tecnologia, saúde e bem-estar — para você não perder tempo garimpando o que vale a pena.
+        </p>
+
+        <div class="trust-row">
+          <div class="trust-chip">
+            <span class="dot" style="background:var(--support)"></span>
+            <span>Links oficiais e seguros</span>
+          </div>
+          <div class="trust-chip">
+            <span class="dot" style="background:var(--action)"></span>
+            <span>Transparência garantida</span>
+          </div>
+          <div class="trust-chip">
+            <span class="dot" style="background:var(--brand)"></span>
+            <span>Curadoria 100% manual</span>
+          </div>
+        </div>
+
+        <p class="disclosure">
+          Alguns links são de afiliado. Se você comprar por eles, recebemos uma comissão sem custo adicional — e
+          isso nunca muda o que a gente recomenda.
+        </p>
+
+        <div class="hero-ctas">
+          <Button variant="action" size="lg" href="#selecoes">Conhecer a curadoria</Button>
+          <a href="#metodo" class="link-cta">Como escolhemos</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-image-frame">
+          <Image src={heroWorkspace} alt="Mesa de trabalho com produtos de tecnologia e bem-estar" width={720} height={540} loading="eager" fetchpriority="high" />
+        </div>
+
+        <div class="float-card float-card--left">
+          <span class="dot" style="background:var(--support)"></span>
+          <div class="float-card-text">
+            <span class="float-card-title">Análise de custo-benefício</span>
+            <span class="float-card-sub">Preço comparado em várias lojas</span>
+          </div>
+        </div>
+
+        <div class="float-card float-card--right">
+          <span class="dot" style="background:var(--action)"></span>
+          <div class="float-card-text">
+            <span class="float-card-title float-card-title--on-brand">Produtos validados</span>
+            <span class="float-card-sub float-card-sub--on-brand">Certificados antes de entrar na lista</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="sobre">
+      <div class="wrap">
+        <div class="sobre-grid">
+          <div class="sobre-heading">
+            <span class="eyebrow">Sobre nós</span>
+            <h2 class="sobre-title">Por que criamos a Maju Vendas Online</h2>
+            <span class="rule"></span>
+          </div>
+          <div class="sobre-copy">
+            <p class="lead">
+              A internet está cheia de promessa genérica: a mesma lista de "10 melhores" copiada em vinte sites,
+              escrita por quem nunca abriu a caixa. Nós nascemos como o filtro que faltava — um lugar onde a
+              recomendação só entra depois de passar por análise, comparação e uso real.
+            </p>
+            <p class="lead lead--muted">
+              Somos um projeto novo e preferimos dizer isso na cara: não temos milhares de clientes para exibir.
+              Temos método, critério e a disposição de dizer "esse não vale a pena" quando for o caso.
+            </p>
+          </div>
+        </div>
+
+        <div class="sobre-cards">
+          <div class="sobre-card">
+            <span class="num-badge" style="background:var(--brand);color:var(--text-on-brand)">01</span>
+            <h3>Análise e pesquisa</h3>
+            <p>Antes de indicar, olhamos o histórico do produtor, a reputação da marca e a qualidade real do que está sendo entregue — não a página de vendas.</p>
+          </div>
+          <div class="sobre-card">
+            <span class="num-badge" style="background:var(--brand-50);color:var(--brand)">02</span>
+            <h3>Custo-benefício real</h3>
+            <p>Comparamos preço com o que o produto de fato entrega. O que está inflado pela promessa, e não pelo valor, fica de fora da lista.</p>
+          </div>
+          <div class="sobre-card">
+            <span class="num-badge" style="background:var(--action-50);color:var(--amber-ink)">03</span>
+            <h3>Transparência total</h3>
+            <p>Dizemos para quem aquele produto serve — e para quem não serve. Sem promessa mágica, sem letra miúda, com o link de afiliado sempre declarado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="nichos-wrap" id="nichos">
+      {nichos.map((nicho, i) => (
+        <section class="nicho-section" data-flow-section={i + 1}>
+          <div class="flow-art-container">
+            <Image src={nicho.img} alt="" width={1600} height={1000} />
+          </div>
+          <span class="nicho-eyebrow">Nicho {nicho.n}</span>
+          <h2 class="flow-word nicho-word" data-word={nicho.word}>{nicho.word}</h2>
+          <p class="nicho-desc">{nicho.desc}</p>
+        </section>
+      ))}
+    </div>
+
+    <section id="como-funciona" class="processo">
+      <div class="wrap wrap--narrow">
+        <div class="processo-heading">
+          <span class="eyebrow">Nosso processo</span>
+          <h2>Transparência do início ao fim: como funciona nossa curadoria</h2>
+          <p class="lead">Três etapas, sempre na mesma ordem. Nenhum link chega até você sem passar por elas.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          {passos.map((p) => (
+            <div class="timeline-row" data-align={p.align}>
+              <div class="timeline-card">
+                <span class="timeline-step" style={`color:${p.labelColor}`}>PASSO {p.n}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
+              <div class="timeline-icon-wrap">
+                <span class="timeline-icon" style={`background:${p.iconBg};color:${p.iconFg}`}>
+                  <Icon name={p.icon as any} size={26} />
+                </span>
+              </div>
+              <div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="selecoes" class="vitrine">
+      <div class="wrap">
+        <div class="vitrine-heading">
+          <span class="eyebrow">Vitrine</span>
+          <h2>Nossas seleções e conteúdos</h2>
+          <p class="lead">Acesse diretamente nossos canais de curadoria e artigos.</p>
+        </div>
+
+        <div class="vitrine-grid">
+          {vitrine.map((item) => (
+            <div class="vitrine-card">
+              <div class="vitrine-media">
+                {item.img ? (
+                  <Image src={item.img} alt="" width={600} height={420} />
+                ) : (
+                  <ImagePlaceholder label="imagem IA — grade de achados nas redes" height="210px" radius="0" tone="sand" />
+                )}
+                <span class="vitrine-badge" data-tone={item.img ? "brand" : "action"}>{item.badge}</span>
+              </div>
+              <div class="vitrine-body">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+                <a href="#" class="vitrine-link">
+                  {item.cta}
+                  <Icon name="arrow-right" size={17} />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contato">
+      <div class="wrap contato-grid">
+        <div class="contato-text">
+          <span class="icon-badge"><Icon name="message-square" size={24} /></span>
+          <span class="eyebrow">Fale conosco</span>
+          <h2>Tem alguma dúvida, sugestão ou quer saber mais?</h2>
+          <p class="lead">
+            Sua opinião é fundamental para aprimorarmos nossa curadoria. Se você quer sugerir um produto para
+            análise, tirar dúvidas sobre um curso ou apenas bater um papo, mande sua mensagem.
+          </p>
+          <div class="response-pill">
+            <span class="dot" style="background:var(--support)"></span>
+            <span>Respondemos em até 24h úteis · sem spam</span>
+          </div>
+        </div>
+
+        <form class="contato-form">
+          <label>
+            <span>Seu e-mail principal</span>
+            <input type="email" name="email" placeholder="seuemail@exemplo.com" required />
+          </label>
+          <label>
+            <span>Sua mensagem ou sugestão</span>
+            <textarea name="message" rows="4" placeholder="Como podemos te ajudar hoje?" required></textarea>
+          </label>
+          <Button variant="action" size="lg" fullWidth>Enviar mensagem</Button>
+          <p class="form-note">Ao enviar, você concorda em receber nossa resposta por e-mail. Não repassamos seu contato para ninguém.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <Logo tone="negative" size={40} />
+          <p>
+            Curadoria independente de produtos, cursos e achados de qualidade. Selecionamos o melhor da web com
+            transparência para você economizar tempo.
+          </p>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram" class="social-btn"><Icon name="camera" size={19} /></a>
+            <a href="#" aria-label="YouTube" class="social-btn"><Icon name="circle-play" size={19} /></a>
+            <a href="#" aria-label="TikTok" class="social-btn"><Icon name="music-2" size={19} /></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <span class="footer-heading">Navegação</span>
+          <nav>
+            <a href="#metodo">Sobre a curadoria</a>
+            <a href="#nichos">Categorias: tecnologia, saúde e bem-estar</a>
+            <a href="#selecoes">Cursos recomendados</a>
+            <a href="#selecoes">Produtos e achadinhos</a>
+            <a href="#selecoes">Blog e artigos</a>
+            <a href="#contato">Fale conosco</a>
+          </nav>
+        </div>
+
+        <div class="footer-legal">
+          <span class="footer-heading">Transparência e compromisso</span>
+          <p>
+            A Maju Vendas Online é um portal de recomendação e curadoria. Trabalhamos com links oficiais de
+            afiliados e podemos receber uma comissão pelas indicações, sem nenhum custo adicional para você.
+            Recomendamos apenas o que validamos.
+          </p>
+        </div>
+      </div>
+
+      <div class="wrap footer-bottom">
+        <span>© 2026 Maju Vendas Online. Todos os direitos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Termos de uso</a>
+          <a href="#">Política de privacidade</a>
+          <a href="#">Aviso de afiliados</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  import { initFlowScroll } from "../scripts/flow-scroll";
+  initFlowScroll();
+</script>
+
+<style>
+  .page {
+    background: var(--bg);
+    min-height: 100vh;
+    font-family: var(--font-body);
+  }
+
+  .wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .wrap--narrow {
+    max-width: 1100px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--size-eyebrow);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+
+  .lead {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .lead--muted {
+    color: var(--text-muted);
+  }
+
+  /* Hero */
+  .hero {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.6vw, 3.9rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: var(--text-heading);
+    text-wrap: pretty;
+    max-width: 15ch;
+    background-image: linear-gradient(100deg, var(--brand) 0%, var(--support) 28%, var(--action) 50%, var(--support) 72%, var(--brand) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: majuTitleFlow 6s linear infinite;
+  }
+  .hero-body {
+    margin: 0;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-muted);
+    max-width: 48ch;
+    text-wrap: pretty;
+  }
+  .trust-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+  .trust-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    transition: var(--transition);
+    min-width: 0;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-body);
+    text-align: center;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .trust-chip:hover {
+    transform: translateY(-1px);
+    border-color: var(--support);
+  }
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    flex: none;
+    display: inline-block;
+  }
+  .disclosure {
+    margin: 4px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-subtle);
+    max-width: 46ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .link-cta {
+    font-family: var(--font-display);
+    font-size: var(--size-ui);
+    font-weight: 500;
+    color: var(--brand);
+    text-decoration: none;
+    padding: 16px 8px;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+  }
+  .link-cta:hover {
+    border-bottom: 2px solid var(--action);
+    text-decoration: none;
+  }
+
+  .hero-media {
+    position: relative;
+    padding: 0 26px 34px 0;
+  }
+  .hero-image-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--surface);
+    box-shadow: var(--shadow-float);
+  }
+  .hero-image-frame :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 460px;
+  }
+  .float-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow-float);
+    transition: var(--transition);
+  }
+  .float-card:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+  .float-card--left {
+    left: -22px;
+    top: 46px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+  }
+  .float-card--right {
+    right: 0;
+    bottom: 0;
+    background: var(--surface-inverse);
+  }
+  .float-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .float-card-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-heading);
+    white-space: nowrap;
+  }
+  .float-card-title--on-brand {
+    color: var(--text-on-brand);
+  }
+  .float-card-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .float-card-sub--on-brand {
+    color: var(--text-on-brand-subtle);
+  }
+
+  /* Sobre */
+  .sobre {
+    background: var(--surface);
+    border-top: 1px solid var(--border-color);
+  }
+  .sobre .wrap {
+    padding-top: 88px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 48px;
+    align-items: start;
+  }
+  .sobre-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sobre-title {
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    max-width: 18ch;
+  }
+  .rule {
+    width: 56px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--action);
+  }
+  .sobre-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sobre-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .sobre-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px 24px 30px;
+    transition: var(--transition);
+  }
+  .sobre-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--support);
+    box-shadow: var(--shadow-float);
+  }
+  .sobre-card h3 {
+    font-size: 21px;
+    letter-spacing: -0.02em;
+  }
+  .sobre-card p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  .num-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Nichos */
+  .nichos-wrap {
+    position: relative;
+    background: var(--brand);
+  }
+  .nicho-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+  .flow-art-container {
+    position: absolute;
+    inset: 0;
+    transform: scale(1.05);
+    overflow: hidden;
+  }
+  .flow-art-container :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .nicho-eyebrow {
+    position: relative;
+    z-index: 10;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 18px rgba(22, 33, 31, 0.7);
+  }
+  .nicho-word {
+    position: relative;
+    z-index: 10;
+    margin: 0;
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    text-shadow: 0 4px 30px rgba(22, 33, 31, 0.55);
+  }
+  .nicho-desc {
+    position: relative;
+    z-index: 10;
+    margin: 24px 0 0;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--sand-100);
+    max-width: 600px;
+    text-align: center;
+    text-shadow: 0 2px 20px rgba(22, 33, 31, 0.75);
+  }
+
+  /* Processo */
+  .processo {
+    background: var(--surface);
+  }
+  .processo .wrap {
+    padding-top: 96px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .processo-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .processo-heading h2 {
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    max-width: 22ch;
+  }
+  .processo-heading .lead {
+    max-width: 56ch;
+    color: var(--text-muted);
+  }
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .timeline-line {
+    position: absolute;
+    top: 32px;
+    bottom: 32px;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: repeating-linear-gradient(to bottom, var(--sand-300) 0 6px, transparent 6px 14px);
+  }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+    align-items: start;
+  }
+  .timeline-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 26px 26px 28px;
+    transition: var(--transition);
+  }
+  .timeline-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-float);
+    border-color: var(--support);
+  }
+  .timeline-row[data-align="right"] .timeline-card {
+    grid-column: 1;
+    align-items: flex-end;
+    text-align: right;
+  }
+  .timeline-row[data-align="left"] .timeline-card {
+    grid-column: 3;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .timeline-step {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+  .timeline-card h3 {
+    font-size: 23px;
+    letter-spacing: -0.02em;
+  }
+  .timeline-card p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 44ch;
+  }
+  .timeline-icon-wrap {
+    grid-column: 2;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .timeline-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(16, 64, 59, 0.18);
+    border: 4px solid var(--bg);
+  }
+
+  /* Vitrine */
+  .vitrine {
+    background: var(--bg);
+  }
+  .vitrine .wrap {
+    padding-top: 96px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .vitrine-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .vitrine-heading h2 {
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    max-width: 20ch;
+  }
+  .vitrine-heading .lead {
+    max-width: 56ch;
+    color: var(--text-muted);
+  }
+  .vitrine-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .vitrine-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .vitrine-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-float);
+    border-color: var(--support);
+  }
+  .vitrine-media {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .vitrine-media :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .vitrine-card:hover .vitrine-media :global(img) {
+    transform: scale(1.05);
+  }
+  .vitrine-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .vitrine-badge[data-tone="brand"] {
+    background: var(--brand);
+    color: var(--text-on-brand);
+  }
+  .vitrine-badge[data-tone="action"] {
+    background: var(--action);
+    color: var(--text-on-action);
+  }
+  .vitrine-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 24px 26px;
+    flex: 1;
+  }
+  .vitrine-body h3 {
+    font-size: 23px;
+    letter-spacing: -0.02em;
+  }
+  .vitrine-body p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    flex: 1;
+  }
+  .vitrine-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-size: var(--size-ui);
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid var(--outline-border);
+    border-radius: 999px;
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+  .vitrine-link:hover {
+    border-color: var(--brand);
+    background: var(--brand-50);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* Contato */
+  .contato {
+    background: var(--surface);
+    border-top: 1px solid var(--border-color);
+  }
+  .contato-grid {
+    padding-top: 96px;
+    padding-bottom: 104px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .contato-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--text-on-brand);
+  }
+  .contato-text h2 {
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    max-width: 18ch;
+  }
+  .contato-text .lead {
+    max-width: 52ch;
+    color: var(--text-muted);
+  }
+  .response-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px 10px 13px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-body);
+  }
+  .contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 32px 30px 34px;
+    box-shadow: var(--shadow-float);
+  }
+  .contato-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--font-body);
+  }
+  .contato-form label > span {
+    font-size: var(--size-small);
+    font-weight: 600;
+    color: var(--text-body);
+  }
+  .contato-form input,
+  .contato-form textarea {
+    padding: 15px 18px;
+    border-radius: var(--radius-input);
+    font-family: var(--font-body);
+    font-size: var(--size-ui);
+    line-height: 1.55;
+    color: var(--ink-900);
+    background: var(--white);
+    border: var(--border-input);
+    outline: none;
+    transition: var(--transition);
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  .contato-form input:focus,
+  .contato-form textarea:focus {
+    border: var(--border-strong);
+    box-shadow: var(--focus-ring);
+  }
+  .form-note {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-subtle);
+  }
+
+  /* Footer */
+  .site-footer {
+    background: var(--surface-inverse);
+  }
+  .footer-grid {
+    padding: 80px 24px 0;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-brand p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-on-brand-muted);
+    max-width: 42ch;
+  }
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(251, 248, 244, 0.22);
+    color: var(--text-on-brand);
+    transition: var(--transition);
+  }
+  .social-btn:hover {
+    background: var(--action);
+    border-color: var(--action);
+    color: var(--text-on-action);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .footer-heading {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--support);
+  }
+  .footer-nav,
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .footer-nav nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-nav nav a {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--text-on-brand-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    width: fit-content;
+    border-bottom: 2px solid transparent;
+  }
+  .footer-nav nav a:hover {
+    color: var(--action);
+    border-bottom: 2px solid var(--action);
+    text-decoration: none;
+  }
+  .footer-legal p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-on-brand-muted);
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 24px 32px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(251, 248, 244, 0.14);
+    font-size: 15px;
+    color: var(--text-on-brand-subtle);
+  }
+  .footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-bottom-links a {
+    font-size: 15px;
+    color: var(--text-on-brand-subtle);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .footer-bottom-links a:hover {
+    color: var(--action);
+    text-decoration: none;
+  }
+
+  @media (max-width: 860px) {
+    .sobre-cards,
+    .vitrine-grid {
+      grid-template-columns: 1fr;
+    }
+    .trust-row {
+      grid-template-columns: 1fr;
+    }
+    .timeline-line {
+      left: 32px;
+    }
+    .timeline-row {
+      grid-template-columns: 64px minmax(0, 1fr);
+    }
+    .timeline-icon-wrap {
+      grid-column: 1;
+    }
+    .timeline-row[data-align="right"] .timeline-card,
+    .timeline-row[data-align="left"] .timeline-card {
+      grid-column: 2;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

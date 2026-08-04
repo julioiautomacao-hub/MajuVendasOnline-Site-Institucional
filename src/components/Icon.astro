@@ -1,0 +1,42 @@
+---
+import search from "../icons/search.svg?raw";
+import shieldCheck from "../icons/shield-check.svg?raw";
+import externalLink from "../icons/external-link.svg?raw";
+import messageSquare from "../icons/message-square.svg?raw";
+import camera from "../icons/camera.svg?raw";
+import circlePlay from "../icons/circle-play.svg?raw";
+import musicTwo from "../icons/music-2.svg?raw";
+import arrowRight from "../icons/arrow-right.svg?raw";
+
+const ICONS = {
+  search,
+  "shield-check": shieldCheck,
+  "external-link": externalLink,
+  "message-square": messageSquare,
+  camera,
+  "circle-play": circlePlay,
+  "music-2": musicTwo,
+  "arrow-right": arrowRight,
+} as const;
+
+interface Props {
+  name: keyof typeof ICONS;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 20, class: className } = Astro.props;
+const raw = ICONS[name]
+  .replace(/width="24"/, `width="${size}"`)
+  .replace(/height="24"/, `height="${size}"`);
+---
+
+<Fragment set:html={raw.replace("<svg", `<svg class="icon ${className ?? ""}"`)} />
+
+<style is:global>
+  .icon {
+    flex: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

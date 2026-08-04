@@ -1,0 +1,49 @@
+:root {
+  /* Base ramp — brand teal */
+  --teal-900: #0B302C;
+  --teal-800: #10403B;
+  --teal-700: #14514B;
+  --teal-300: #7FB69B;
+  --teal-50:  #E9F1EE;
+  --teal-100: #D8E6E1;
+
+  /* Base ramp — action amber */
+  --amber-700: #C4741F;
+  --amber-600: #D9832F;
+  --amber-500: #E8944A;
+  --amber-50:  #FDF0E3;
+  --amber-ink: #A65B14;
+
+  /* Warm neutrals */
+  --ink-900: #16211F;
+  --ink-700: #3A423F;
+  --ink-500: #5C6360;
+  --ink-400: #8B8478;
+  --ink-300: #A9A296;
+  --sand-300: #CFC7B9;
+  --sand-250: #DDD4C6;
+  --sand-200: #E5DCCE;
+  --sand-150: #EDE6DC;
+  --sand-100: #F6F1E9;
+  --sand-50:  #FBF8F4;
+  --white:    #FFFFFF;
+
+  /* Semantic status */
+  --red-600:  #A8382A;
+  --red-50:   #FBE9E6;
+
+  /* Aliases used across the identity docs */
+  --brand:        var(--teal-800);
+  --brand-hover:  var(--teal-700);
+  --brand-active: var(--teal-900);
+  --brand-50:     var(--teal-50);
+  --action:        var(--amber-500);
+  --action-hover:  var(--amber-600);
+  --action-active: var(--amber-700);
+  --action-50:     var(--amber-50);
+  --support:       var(--teal-300);
+  --danger:  var(--red-600);
+  --danger-bg: var(--red-50);
+  --warning: var(--amber-ink);
+  --warning-bg: var(--amber-50);
+}

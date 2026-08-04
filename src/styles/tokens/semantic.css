@@ -1,0 +1,32 @@
+:root {
+  /* Superfícies */
+  --bg: var(--sand-50);
+  --surface: var(--sand-100);
+  --surface-card: var(--white);
+  --surface-inverse: var(--brand);
+  --surface-ink: var(--ink-900);
+  --border-color: var(--sand-150);
+
+  /* Texto */
+  --text-body: var(--ink-700);
+  --text-heading: var(--ink-900);
+  --text-muted: var(--ink-500);
+  --text-subtle: var(--ink-400);
+  --text-disabled: var(--ink-300);
+  --text-on-brand: var(--sand-50);
+  --text-on-brand-muted: #C9DAD6;
+  --text-on-brand-subtle: #9DBDB7;
+  --text-on-action: var(--ink-900);
+  --text-eyebrow: var(--brand);
+  --text-link: var(--brand);
+  --text-link-hover: #C97A2E;
+
+  /* Ações */
+  --cta-bg: var(--action);
+  --cta-fg: var(--ink-900);
+  --secondary-bg: var(--brand);
+  --secondary-fg: var(--sand-50);
+  --outline-border: var(--sand-300);
+  --disabled-bg: var(--sand-150);
+  --disabled-fg: var(--ink-300);
+}

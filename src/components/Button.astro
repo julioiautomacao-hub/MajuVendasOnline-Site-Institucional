@@ -1,0 +1,122 @@
+---
+interface Props {
+  variant?: "action" | "brand" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+  fullWidth?: boolean;
+  href?: string;
+  class?: string;
+}
+
+const {
+  variant = "action",
+  size = "md",
+  disabled = false,
+  fullWidth = false,
+  href,
+  class: className,
+} = Astro.props;
+
+const Tag = href && !disabled ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  disabled={Tag === "button" ? disabled : undefined}
+  class:list={["btn", className]}
+  data-variant={variant}
+  data-size={size}
+  data-full={fullWidth ? "true" : undefined}
+  data-disabled={disabled ? "true" : undefined}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    font-family: var(--font-display);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    line-height: 1;
+  }
+  .btn:hover {
+    text-decoration: none;
+  }
+  .btn[data-full="true"] {
+    width: 100%;
+  }
+
+  .btn[data-size="sm"] { padding: 11px 22px; font-size: 1rem; }
+  .btn[data-size="md"] { padding: 15px 26px; font-size: var(--size-ui); }
+  .btn[data-size="lg"] { padding: 16px 30px; font-size: 1.125rem; }
+
+  .btn[data-variant="action"] {
+    background: var(--action);
+    color: var(--text-on-action);
+    font-weight: var(--weight-semibold);
+  }
+  .btn[data-variant="action"]:hover {
+    background: var(--action-hover);
+    transform: var(--lift-hover);
+  }
+  .btn[data-variant="action"]:active {
+    background: var(--action-active);
+    transform: var(--lift-active);
+  }
+
+  .btn[data-variant="brand"] {
+    background: var(--brand);
+    color: var(--secondary-fg);
+    font-weight: var(--weight-semibold);
+  }
+  .btn[data-variant="brand"]:hover {
+    background: var(--brand-hover);
+    transform: var(--lift-hover);
+  }
+  .btn[data-variant="brand"]:active {
+    background: var(--brand-active);
+    transform: var(--lift-active);
+  }
+
+  .btn[data-variant="outline"] {
+    background: transparent;
+    color: var(--ink-900);
+    border: 1px solid var(--outline-border);
+    font-weight: var(--weight-medium);
+  }
+  .btn[data-variant="outline"]:hover {
+    border-color: var(--brand);
+    background: var(--brand-50);
+  }
+  .btn[data-variant="outline"]:active {
+    background: var(--teal-100);
+  }
+
+  .btn[data-variant="ghost"] {
+    background: transparent;
+    color: var(--brand);
+    font-weight: var(--weight-semibold);
+  }
+  .btn[data-variant="ghost"]:hover {
+    background: var(--brand-50);
+  }
+  .btn[data-variant="ghost"]:active {
+    background: var(--teal-100);
+  }
+
+  .btn[data-disabled="true"] {
+    background: var(--disabled-bg);
+    color: var(--disabled-fg);
+    border-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+interface Props {
+  variant?: "lockup" | "wordmark" | "mark";
+  tone?: "brand" | "negative" | "mono" | "onImage";
+  size?: number;
+  showTagline?: boolean;
+  showDot?: boolean;
+  href?: string;
+}
+
+const TONES = {
+  brand: { mark: "var(--brand)", glyph: "var(--sand-50)", word: "var(--ink-900)", tagline: "var(--ink-500)" },
+  negative: { mark: "var(--sand-50)", glyph: "var(--brand)", word: "var(--sand-50)", tagline: "#9BA49F" },
+  mono: { mark: "var(--ink-900)", glyph: "var(--sand-50)", word: "var(--ink-900)", tagline: "var(--ink-500)" },
+  onImage: { mark: "var(--sand-50)", glyph: "var(--brand)", word: "var(--sand-50)", tagline: "var(--sand-150)" },
+};
+
+const {
+  variant = "lockup",
+  tone = "brand",
+  size = 36,
+  showTagline = false,
+  showDot = true,
+  href,
+} = Astro.props;
+
+const t = TONES[tone] ?? TONES.brand;
+const dot = Math.round(size * 0.24);
+const glyphSize = Math.round(size * 0.485);
+const wordSize = Math.round(size * 0.95);
+const taglineSize = Math.max(11, Math.round(size * 0.33));
+const wordGap = Math.max(4, Math.round(size * 0.1));
+const lockupGap = Math.round(size * 0.34);
+
+const Tag = href ? "a" : "span";
+---
+
+<Tag href={href} class="logo" style={`gap:${lockupGap}px`}>
+  {variant !== "wordmark" && (
+    <span class="logo-mark" style={`width:${size}px;height:${size}px;background:${t.mark}`}>
+      <span class="logo-glyph" style={`font-size:${glyphSize}px;color:${t.glyph}`}>M</span>
+      {showDot && (
+        <span
+          class="logo-dot"
+          style={`right:${Math.round(size * 0.05)}px;bottom:${Math.round(size * 0.08)}px;width:${dot}px;height:${dot}px`}
+        ></span>
+      )}
+    </span>
+  )}
+  {variant !== "mark" && (
+    <span class="logo-word" style={`gap:${wordGap}px`}>
+      <span class="logo-wordmark" style={`font-size:${wordSize}px;color:${t.word}`}>maju<span class="logo-dot-char">.</span></span>
+      {showTagline && (
+        <span class="logo-tagline" style={`font-size:${taglineSize}px;color:${t.tagline}`}>vendas online</span>
+      )}
+    </span>
+  )}
+</Tag>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .logo-mark {
+    position: relative;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .logo-glyph {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    line-height: 1;
+  }
+  .logo-dot {
+    position: absolute;
+    border-radius: var(--radius-pill);
+    background: var(--action);
+  }
+  .logo-word {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .logo-dot-char {
+    color: var(--action);
+  }
+  .logo-tagline {
+    font-family: var(--font-body);
+    letter-spacing: var(--tracking-wordmark);
+    text-transform: uppercase;
+  }
+</style>

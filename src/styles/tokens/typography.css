@@ -1,0 +1,37 @@
+:root {
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Scale — display/h2/h3 are Outfit 600; body/small are Source Sans 3 */
+  --size-display: 3.25rem;   /* 52px, hero da Home (64px em specimen wide) */
+  --leading-display: 1.02;
+  --tracking-display: -0.03em;
+
+  --size-h2: 2.5rem;         /* 40px */
+  --leading-h2: 1.1;
+  --tracking-h2: -0.025em;
+
+  --size-h3: 1.5rem;         /* 24px */
+  --leading-h3: 1.25;
+  --tracking-h3: -0.01em;
+
+  --size-body: 1.1875rem;    /* 19px */
+  --leading-body: 1.65;
+
+  --size-ui: 1.0625rem;      /* 17px — botões e campos */
+  --size-small: 0.9375rem;   /* 15px — legendas, meta, disclaimer */
+  --leading-small: 1.5;
+
+  --size-eyebrow: 0.8125rem; /* 13px */
+  --tracking-eyebrow: 0.1em;
+  --tracking-wordmark: 0.3em;
+
+  --measure-prose: 68ch;     /* 68–75 caracteres */
+}

@@ -1,0 +1,25 @@
+:root {
+  --radius-chip: 8px;
+  --radius-input: 12px;
+  --radius-card: 16px;
+  --radius-card-lg: 20px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+  --border: var(--border-width) solid var(--sand-150);
+  --border-input: var(--border-width) solid var(--sand-250);
+  --border-strong: 2px solid var(--brand);
+
+  --shadow-card: 0 1px 2px rgba(22, 33, 31, 0.04), 0 8px 24px rgba(22, 33, 31, 0.06);
+  --shadow-float: 0 30px 70px rgba(22, 33, 31, 0.18);
+  --focus-ring: 0 0 0 4px var(--brand-50);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 150ms;
+  --transition: all var(--duration) var(--ease);
+  --lift-hover: translateY(-1px);
+  --lift-active: translateY(1px);
+
+  /* Marcador de imagem gerada por IA (usado em mockups e slots vazios) */
+  --ai-hatch: repeating-linear-gradient(135deg, var(--sand-150) 0 12px, var(--sand-100) 12px 24px);
+}
