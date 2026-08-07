@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
+import Button from "./Button.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  updated: string;
+}
+
+const { title, description, updated } = Astro.props;
+---
+
+<Layout title={`${title} — Maju Vendas Online`} description={description}>
+  <div class="page">
+    <SiteHeader items={[]} showCta={false} />
+
+    <main class="legal">
+      <div class="wrap">
+        <Button variant="outline" size="sm" href="/" class="back-btn">← Voltar para a página inicial</Button>
+
+        <div class="legal-head">
+          <span class="eyebrow">Última atualização: {updated}</span>
+          <h1>{title}</h1>
+        </div>
+
+        <div class="legal-body">
+          <slot />
+        </div>
+
+        <Button variant="brand" href="/" class="back-btn back-btn--bottom">← Voltar para a página inicial</Button>
+      </div>
+    </main>
+
+    <SiteFooter />
+  </div>
+</Layout>
+
+<style>
+  .page {
+    background: var(--bg);
+    min-height: 100vh;
+    font-family: var(--font-body);
+  }
+  .wrap {
+    max-width: var(--measure-prose);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .legal {
+    padding: 56px 0 104px;
+  }
+  :global(.back-btn) {
+    margin-bottom: var(--space-5);
+  }
+  :global(.back-btn--bottom) {
+    margin-top: var(--space-5);
+    margin-bottom: 0;
+  }
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: var(--font-body);
+    font-size: var(--size-eyebrow);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+  .legal-head h1 {
+    margin: 0 0 48px;
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .legal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+  .legal-body :global(h2) {
+    margin-top: 32px;
+    font-size: 1.4rem;
+    letter-spacing: -0.015em;
+  }
+  .legal-body :global(p) {
+    margin: 0;
+    color: var(--text-body);
+  }
+  .legal-body :global(ul) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .legal-body :global(li) {
+    position: relative;
+    padding-left: 22px;
+  }
+  .legal-body :global(li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background: var(--support);
+  }
+  .legal-body :global(strong) {
+    color: var(--text-heading);
+    font-weight: var(--weight-semibold);
+  }
+</style>

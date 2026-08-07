@@ -12,22 +12,25 @@ interface Props {
   active?: string;
   ctaLabel?: string;
   ctaHref?: string;
+  showCta?: boolean;
   sticky?: boolean;
 }
 
 const {
   items = [
     { label: "Home", href: "/" },
-    { label: "Sobre", href: "#metodo" },
-    { label: "Como funciona", href: "#como-funciona" },
-    { label: "Seleções", href: "#selecoes" },
-    { label: "Contato", href: "#contato" },
+    { label: "Sobre", href: "/#metodo" },
+    { label: "Como funciona", href: "/#como-funciona" },
+    { label: "Seleções", href: "/#selecoes" },
   ],
   active = "Home",
-  ctaLabel = "Ver curadoria",
-  ctaHref = "#curadoria",
+  ctaLabel = "Contato",
+  ctaHref = "/#contato",
+  showCta = true,
   sticky = true,
 } = Astro.props;
+
+const hasNav = items.length > 0 || showCta;
 ---
 
 <header class="site-header" data-sticky={sticky ? "true" : undefined}>
@@ -35,20 +38,26 @@ const {
     <Logo size={36} />
   </a>
 
-  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  {hasNav && (
+    <>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-  <nav class="site-nav" id="site-nav">
-    {items.map((item) => (
-      <a href={item.href} class="nav-link" data-active={item.label === active ? "true" : undefined}>
-        {item.label}
-      </a>
-    ))}
-    <Button variant="action" size="sm" href={ctaHref} class="nav-cta">{ctaLabel}</Button>
-  </nav>
+      <nav class="site-nav" id="site-nav">
+        {items.map((item) => (
+          <a href={item.href} class="nav-link" data-active={item.label === active ? "true" : undefined}>
+            {item.label}
+          </a>
+        ))}
+        {showCta && (
+          <Button variant="action" size="sm" href={ctaHref} class="nav-cta">{ctaLabel}</Button>
+        )}
+      </nav>
+    </>
+  )}
 </header>
 
 <script>

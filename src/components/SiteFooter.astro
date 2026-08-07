@@ -1,0 +1,177 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <Logo tone="negative" size={40} />
+      <p>
+        Curadoria independente de produtos, cursos e achados de qualidade. Selecionamos o melhor da web com
+        transparência para você economizar tempo.
+      </p>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram" class="social-btn"><Icon name="camera" size={19} /></a>
+        <a href="#" aria-label="YouTube" class="social-btn"><Icon name="circle-play" size={19} /></a>
+        <a href="#" aria-label="TikTok" class="social-btn"><Icon name="music-2" size={19} /></a>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <span class="footer-heading">Navegação</span>
+      <nav>
+        <a href="/#como-funciona">Sobre a curadoria</a>
+        <a href="/#nichos">Categorias: tecnologia, saúde e bem-estar</a>
+        <a href="/#selecoes">Cursos recomendados</a>
+        <a href="/#selecoes">Produtos e achadinhos</a>
+        <a href="/#selecoes">Blog e artigos</a>
+        <a href="/#contato">Fale conosco</a>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <span class="footer-heading">Transparência e compromisso</span>
+      <p>
+        A Maju Vendas Online é um portal de recomendação e curadoria. Trabalhamos com links oficiais de
+        afiliados e podemos receber uma comissão pelas indicações, sem nenhum custo adicional para você.
+        Recomendamos apenas o que validamos.
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© 2026 Maju Vendas Online. Todos os direitos reservados.</span>
+    <div class="footer-bottom-links">
+      <a href="/termos-de-uso">Termos de uso</a>
+      <a href="/politica-de-privacidade">Política de privacidade</a>
+      <a href="/aviso-de-afiliados">Aviso de afiliados</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .site-footer {
+    background: var(--surface-inverse);
+  }
+  .footer-grid {
+    padding: 80px 24px 0;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-brand p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-on-brand-muted);
+    max-width: 42ch;
+  }
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(251, 248, 244, 0.22);
+    color: var(--text-on-brand);
+    transition: var(--transition);
+  }
+  .social-btn:hover {
+    background: var(--action);
+    border-color: var(--action);
+    color: var(--text-on-action);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .footer-heading {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--support);
+  }
+  .footer-nav,
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .footer-nav nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-nav nav a {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--text-on-brand-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    width: fit-content;
+    border-bottom: 2px solid transparent;
+  }
+  .footer-nav nav a:hover {
+    color: var(--action);
+    border-bottom: 2px solid var(--action);
+    text-decoration: none;
+  }
+  .footer-legal p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-on-brand-muted);
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 24px 32px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(251, 248, 244, 0.14);
+    font-size: 15px;
+    color: var(--text-on-brand-subtle);
+  }
+  .footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-bottom-links a {
+    font-size: 15px;
+    color: var(--text-on-brand-subtle);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .footer-bottom-links a:hover {
+    color: var(--action);
+    text-decoration: none;
+  }
+
+  @media (max-width: 860px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

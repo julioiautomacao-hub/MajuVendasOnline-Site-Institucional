@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import CourseCard from "../components/CourseCard.astro";
+
+const cursos = (await getCollection("cursos")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title, "pt-BR")
+);
+---
+
+<Layout
+  title="Cursos recomendados — Maju Vendas Online"
+  description="Treinamentos e formações validados pela nossa curadoria, em tecnologia, saúde e bem-estar."
+>
+  <div class="page">
+    <SiteHeader active="Seleções" />
+
+    <main class="listing">
+      <div class="wrap">
+        <div class="listing-head">
+          <span class="eyebrow">Vitrine · Cursos</span>
+          <h1>Cursos recomendados</h1>
+          <p class="lead">
+            Treinamentos e formações validados para potencializar suas habilidades com segurança. Cada link leva
+            direto para a página oficial do curso.
+          </p>
+        </div>
+
+        {cursos.length > 0 ? (
+          <div class="listing-grid">
+            {cursos.map((curso) => (
+              <CourseCard
+                title={curso.data.title}
+                niche={curso.data.niche}
+                description={curso.data.description}
+                presellUrl={curso.data.presellUrl}
+                image={curso.data.image}
+                imageAlt={curso.data.imageAlt}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="empty">Nenhum curso publicado ainda. Volte em breve.</p>
+        )}
+      </div>
+    </main>
+
+    <SiteFooter />
+  </div>
+</Layout>
+
+<style>
+  .page {
+    background: var(--bg);
+    min-height: 100vh;
+    font-family: var(--font-body);
+  }
+  .wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .listing {
+    padding: 56px 0 104px;
+  }
+  .listing-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 60ch;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--size-eyebrow);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-eyebrow);
+  }
+  .listing-head h1 {
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .lead {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+  .listing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .empty {
+    font-size: 17px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 860px) {
+    .listing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
