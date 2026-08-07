@@ -29,9 +29,9 @@ const passos = [
 
 const vitrine = [
   { badge: "Educação & desenvolvimento", title: "Cursos recomendados", desc: "Treinamentos e formações validados para potencializar suas habilidades com segurança.", cta: "Ver cursos selecionados", img: imagemCursos, href: "/cursos" },
-  { badge: "Gadgets & utilidades", title: "Produtos e achadinhos", desc: "Seleção dos melhores produtos em tecnologia e bem-estar com o melhor custo-benefício.", cta: "Explorar achados", img: imagemAchadinhos, href: "#" },
-  { badge: "Análises & dicas", title: "Blog Maju Vendas", desc: "Análises profundas, guias de compra e dicas para você não errar na escolha.", cta: "Ler artigos", img: imagemBlog, href: "#" },
-  { badge: "Em breve · comunidade", title: "AchadosAvocados", desc: "Nosso projeto de curadoria visual e achadinhos exclusivos nas redes sociais.", cta: "Conhecer o projeto", img: null, href: "#" },
+  { badge: "Gadgets & utilidades", title: "Produtos e achadinhos", desc: "Seleção dos melhores produtos em tecnologia e bem-estar com o melhor custo-benefício.", cta: "Explorar achados", img: imagemAchadinhos, href: "#", comingSoon: true },
+  { badge: "Análises & dicas", title: "Blog Maju Vendas", desc: "Análises profundas, guias de compra e dicas para você não errar na escolha.", cta: "Ler artigos", img: imagemBlog, href: "#", comingSoon: true },
+  { badge: "Em breve · comunidade", title: "AchadosAvocados", desc: "Nosso projeto de curadoria visual e achadinhos exclusivos nas redes sociais.", cta: "Conhecer o projeto", img: null, href: "#", comingSoon: true },
 ];
 ---
 
@@ -191,7 +191,7 @@ const vitrine = [
         </div>
 
         <div class="vitrine-grid">
-          {vitrine.map((item) => (
+          {vitrine.map((item, i) => (
             <div class="vitrine-card">
               <div class="vitrine-media">
                 {item.img ? (
@@ -204,10 +204,20 @@ const vitrine = [
               <div class="vitrine-body">
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
-                <a href={item.href} class="vitrine-link">
-                  {item.cta}
-                  <Icon name="arrow-right" size={17} />
-                </a>
+                {item.comingSoon ? (
+                  <>
+                    <button type="button" class="vitrine-link" data-coming-soon aria-describedby={`vitrine-soon-${i}`}>
+                      {item.cta}
+                      <Icon name="arrow-right" size={17} />
+                    </button>
+                    <p class="vitrine-soon-msg" id={`vitrine-soon-${i}`} role="status" aria-live="polite"></p>
+                  </>
+                ) : (
+                  <a href={item.href} class="vitrine-link">
+                    {item.cta}
+                    <Icon name="arrow-right" size={17} />
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -254,8 +264,10 @@ const vitrine = [
 <script>
   import { initFlowScroll } from "../scripts/flow-scroll";
   import { initContactForm } from "../scripts/contact-form";
+  import { initComingSoon } from "../scripts/coming-soon";
   initFlowScroll();
   initContactForm();
+  initComingSoon();
 </script>
 
 <style>
@@ -842,12 +854,27 @@ const vitrine = [
     border-radius: 999px;
     transition: var(--transition);
     white-space: nowrap;
+    background: none;
+    cursor: pointer;
   }
   .vitrine-link:hover {
     border-color: var(--brand);
     background: var(--brand-50);
     transform: translateY(-1px);
     text-decoration: none;
+  }
+  .vitrine-soon-msg {
+    margin: 2px 0 0;
+    font-size: var(--size-small);
+    font-weight: 600;
+    color: var(--text-muted);
+    min-height: 1em;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .vitrine-soon-msg[data-state="info"] {
+    opacity: 1;
+    color: var(--brand);
   }
 
   /* Contato */
